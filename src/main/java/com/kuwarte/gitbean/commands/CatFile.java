@@ -7,12 +7,18 @@ import java.io.IOException;
 public class CatFile {
 
     public static void run(String[] args) {
-        if (args.length < 3 || !args[1].equals("p")) {
-            System.err.println("usage: gitbean cat-file -p <hash>");
+        if (args.length < 3) {
+            System.err.println("usage: gitbean cat-file <-p|-t|-s> <hash>");
             System.exit(1);
         }
 
+        String flag = args[1];
         String hash = args[2];
+
+        if (!flag.equals("-p") && !flag.equals("-t") && !flag.equals("-s")) {
+            System.err.println("usage gitbean cat-file <-p|-t|-s> <hash>");
+            System.exit(1);
+        }
 
         try {
             byte[] rawContent = ObjectStore.readObject(hash);
@@ -25,6 +31,20 @@ public class CatFile {
             }
 
             String header = new String(rawContent, 0, nullIndex);
+
+            if (flag.equals("-t")) {
+                String type = header.split(" ")[0];
+                System.out.println(type);
+                return;
+            }
+
+            if (flag.equals("-s")) {
+                String size = header.split(" ")[1];
+                System.out.println(size);
+                return;
+            }
+
+            // if -p then:
             byte[] content = new byte[rawContent.length - nullIndex - 1];
 
             System.arraycopy(rawContent, nullIndex + 1, content, 0, content.length);
