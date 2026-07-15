@@ -1,5 +1,6 @@
 package com.kuwarte.gitbean;
 
+import com.kuwarte.gitbean.commands.CatFile;
 import com.kuwarte.gitbean.commands.HashObject;
 import com.kuwarte.gitbean.commands.Init;
 
@@ -19,6 +20,10 @@ public class App {
 
             case "hash-object":
                 HashObject.run(args);
+                break;
+
+            case "cat-file":
+                CatFile.run(args);
                 break;
 
             default:
