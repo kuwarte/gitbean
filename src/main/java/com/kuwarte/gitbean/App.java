@@ -1,5 +1,6 @@
 package com.kuwarte.gitbean;
 
+import com.kuwarte.gitbean.commands.HashObject;
 import com.kuwarte.gitbean.commands.Init;
 
 public class App {
@@ -16,9 +17,13 @@ public class App {
                 Init.run(args);
                 break;
 
+            case "hash-object":
+                HashObject.run(args);
+                break;
+
             default:
                 System.err.println("gitbean: '" + command + "' is not a gitbean command.");
-                System.exit(0);
+                System.exit(1);
         }
     }
 }
