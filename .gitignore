@@ -49,3 +49,6 @@ bin/
 Thumbs.db
 
 .gitbean/
+
+# Local Test
+sandbox/
