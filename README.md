@@ -100,4 +100,4 @@ gitbean add test.txt
 
 - [Progress / Milestone Checklist](docs/progress/01.md)
 - [Object Format Reference](docs/object-format/01.md)
-- [Lessons Log](docs/lesson/01.md)
+- [Lessons Log](docs/lessons/01.md)
