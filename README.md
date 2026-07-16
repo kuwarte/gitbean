@@ -98,6 +98,6 @@ gitbean add test.txt
 
 ## Docs
 
-- [Progress / milestone checklist](docs/PROGRESS.md)
-- [Object format reference](docs/OBJECT-FORMAT.md)
-- [Learnings log](docs/LEARNINGS.md)
+- [Progress / Milestone Checklist](docs/progress/01.md)
+- [Object Format Reference](docs/object-format/01.md)
+- [Lessons Log](docs/lesson/01.md)
