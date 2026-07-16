@@ -11,32 +11,36 @@ Building each command exactly like real Git (same object format, same `.git`-sty
 Add an alias so you can run `gitbean <command>` like a real installed tool, instead of retyping the full classpath every time.
 
 Check your shell first:
-​`bash
+
+```bash
 echo $SHELL
-​`
+```
 
 Edit `~/.bashrc` (or `~/.zshrc` if using zsh) and add:
-​`bash
+
+```bash
 alias gitbean='java -cp ~/code/gitbean/target/classes com.kuwarte.gitbean.App'
-​`
+```
 
 Reload it:
-​`bash
+
+```bash
 source ~/.bashrc
-​`
+```
 
 Now `gitbean init`, `gitbean add test.txt`, etc. work from any directory.
 
 > Whenever you change the Java source, you still need to recompile first:
-> ​`bash
-cd ~/code/gitbean && mvn compile
-​`
+>
+> ```bash
+> cd ~/code/gitbean && mvn compile
+> ```
 
 ### Without the alias
 
-​`bash
+```bash
 mvn compile exec:java -Dexec.mainClass="com.kuwarte.gitbean.App" -Dexec.args="<command> <args>"
-​`
+```
 
 > Note: always chain `compile` before `exec:java` — Maven won't auto-recompile otherwise, and you'll silently run stale code.
 
@@ -46,13 +50,13 @@ Never run gitbean commands directly inside the `gitbean/` project folder — it 
 
 Instead, use a separate sandbox folder as a sibling to `gitbean/`:
 
-​`
+```
 ~/code/
 ├── gitbean/     <- this repo (source code only)
 └── sandbox/     <- test playground, separate git repo (or no repo at all)
-​`
+```
 
-​```bash
+```bash
 mkdir -p ~/code/sandbox
 cd ~/code/sandbox
 echo "hello world" > test.txt
@@ -63,13 +67,14 @@ gitbean hash-object -w test.txt
 gitbean cat-file -p <hash>
 gitbean add test.txt
 cat .gitbean/index
-​```
+```
 
 Reset the sandbox to a clean slate anytime:
-​`bash
+
+```bash
 cd ~/code/sandbox
 rm -rf .gitbean test.txt test2.txt
-​`
+```
 
 ## Commands implemented
 
@@ -84,12 +89,12 @@ rm -rf .gitbean test.txt test2.txt
 
 ## Examples
 
-​`bash
+```bash
 gitbean init
 gitbean hash-object -w test.txt
 gitbean cat-file -p <hash>
 gitbean add test.txt
-​`
+```
 
 ## Docs
 
